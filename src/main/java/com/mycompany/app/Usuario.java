@@ -7,7 +7,7 @@ public class Usuario extends Pessoa {
     public Usuario(String nome, Livro[] livros, int idade, Emprestimo[] historicoEmprestimos) {
         super(nome, livros);
         this.idade = idade;
-        this.historicoEmprestimos = historicoEmprestimos;
+        this.historicoEmprestimos = historicoEmprestimos != null ? historicoEmprestimos : new Emprestimo[0];
     }
 
     public int getIdade() {
@@ -16,5 +16,12 @@ public class Usuario extends Pessoa {
 
     public Emprestimo[] getHistoricoEmprestimos() {
         return historicoEmprestimos;
+    }
+
+    public void adicionarEmprestimo(Emprestimo novoEmprestimo) {
+        Emprestimo[] novoHistorico = new Emprestimo[historicoEmprestimos.length + 1];
+        System.arraycopy(historicoEmprestimos, 0, novoHistorico, 0, historicoEmprestimos.length);
+        novoHistorico[historicoEmprestimos.length] = novoEmprestimo;
+        historicoEmprestimos = novoHistorico;
     }
 }
