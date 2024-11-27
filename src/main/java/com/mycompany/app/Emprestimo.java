@@ -1,3 +1,5 @@
+package com.mycompany.app;
+
 public class Emprestimo {
     private String dataRetirada;
     private String dataDevolucao;

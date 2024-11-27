@@ -1,3 +1,5 @@
+package com.mycompany.app;
+
 public class Usuario extends Pessoa {
     private int idade;
     private Emprestimo[] historicoEmprestimos;

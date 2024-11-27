@@ -1,32 +1,29 @@
-public class Autor extends Pessoa {
+package com.mycompany.app;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Autor {
+    private String nome;
+    private Livro[] obrasPublicadas;
     private String nacionalidade;
 
-    public Autor(String nome, Livro[] livros, String nacionalidade) {
-        super(nome, livros); // Chama o construtor da classe Pessoa para inicializar nome e livros
+    public Autor(String nome, Livro[] obrasPublicadas, String nacionalidade) {
+        this.nome = nome;
+        this.obrasPublicadas = obrasPublicadas;
         this.nacionalidade = nacionalidade;
     }
 
-    public String getNacionalidade() {
-        return nacionalidade;
-    }
-
     public Livro[] getObrasPublicadas() {
-        return getLivros(); // Utiliza o método getLivros() da classe Pessoa
+        return obrasPublicadas;
     }
 
     public Livro[] getObrasPublicadasPorGenero(String genero) {
-        Livro[] obras = getLivros(); // Pega as obras através do método herdado
-        Livro[] filtrados = new Livro[obras.length];
-        int contador = 0;
-
-        for (Livro livro : obras) {
-            if (livro != null && livro.getGenero().equalsIgnoreCase(genero)) {
-                filtrados[contador++] = livro;
+        List<Livro> filtrados = new ArrayList<>();
+        for (Livro livro : obrasPublicadas) {
+            if (livro.getGenero().equals(genero)) {
+                filtrados.add(livro);
             }
         }
-
-        Livro[] resultado = new Livro[contador];
-        System.arraycopy(filtrados, 0, resultado, 0, contador);
-        return resultado;
+        return filtrados.toArray(new Livro[0]);
     }
 }

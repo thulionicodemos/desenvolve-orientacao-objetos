@@ -1,38 +1,23 @@
+package com.mycompany.app;
+
 import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        // Criando livros
-        Livro livro1 = new Livro("O Alquimista", null, "Ficção", true);
-        Livro livro2 = new Livro("Brida", null, "Romance", true);
+        Livro livro1 = new Livro("Livro 1", "Ficção");
+        Livro livro2 = new Livro("Livro 2", "Poesia");
 
-        // Associando os livros ao autor
-        Livro[] obras = {livro1, livro2};
-        Autor autor = new Autor("Paulo Coelho", obras, "Brasileira");
+        Livro[] livros1 = {livro1, livro2};
+        Autor autor1 = new Autor("Carlos Drummond de Andrade", livros1, "Brasileira");
 
-        // Configurando o autor nos livros
-        livro1 = new Livro("O Alquimista", autor, "Ficção", true);
-        livro2 = new Livro("Brida", autor, "Romance", true);
+        Livro[] livros2 = {new Livro("Livro 3", "Fantasia")};
+        Autor autor2 = new Autor("George R. R. Martin", livros2, "Norte-Americana");
 
-        // Exibindo informações do autor
-        System.out.println("Nome do autor: " + autor.getNome());
-        System.out.println("Nacionalidade: " + autor.getNacionalidade());
+        Autor[] autores = {autor1, autor2};
 
-        // Exibindo todas as obras do autor
-        System.out.println("\nObras publicadas:");
-        for (Livro livro : autor.getObrasPublicadas()) {
-            if (livro != null) {
-                System.out.println("- " + livro.getTitulo() + " (" + livro.getGenero() + ")");
-            }
-        }
-
-        // Filtrando obras por gênero
-        String generoDesejado = "Ficção";
-        System.out.println("\nObras de " + generoDesejado + ":");
-        Livro[] obrasFiltradas = autor.getObrasPublicadasPorGenero(generoDesejado);
-        for (Livro livro : obrasFiltradas) {
-            if (livro != null) {
-                System.out.println("- " + livro.getTitulo());
+        for (Autor autor : autores) {
+            for (Livro livro : autor.getObrasPublicadas()) {
+                System.out.println(livro.getTitulo());
             }
         }
     }
